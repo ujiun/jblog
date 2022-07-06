@@ -28,5 +28,12 @@ public class UserService {
 		return userDao.getUser(userVo);
 	}
 	
+	//한명정보 가져오기
+	public UserVo getUser(String id) {
+		System.out.println("UserService > getUser");
+		
+		return userDao.getUser(id);
+	}
+	
 	
 }

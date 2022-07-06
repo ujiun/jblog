@@ -21,9 +21,16 @@ public class UserDao {
 	
 	//로그인
 	public UserVo getUser(UserVo userVo) {
-		System.out.println("UserDao > getUser");
+		System.out.println("UserDao > getUser(로그인)");
 		
 		return sqlSession.selectOne("user.getUser", userVo);
 		
+	}
+	
+	//한명정보 가져오기
+	public UserVo getUser(String id) {
+		System.out.println("UserDao > getUser(한명정보)");
+		
+		return sqlSession.selectOne("user.getUser2", id);
 	}
 }
