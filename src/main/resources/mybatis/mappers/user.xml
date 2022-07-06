@@ -12,8 +12,7 @@
 	
 	<select id="getUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
-			select  userNo,
-       			    id
+			select  id
 			from users
 			where id = #{id}
 			and password = #{password}
