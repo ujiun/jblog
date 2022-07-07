@@ -29,10 +29,10 @@ public class BlogDao {
 	}
 	
 	//블로그 업데이트
-	public void updateBlog(BlogVo blogVo) {
+	public int updateBlog(BlogVo blogVo) {
 		System.out.println("BlogDao > updateBlog");
 		
-		System.out.println(blogVo);
+		return sqlSession.update("blog.updateBlog", blogVo);
 	}
 	
 }
