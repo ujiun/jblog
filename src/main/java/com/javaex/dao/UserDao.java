@@ -19,12 +19,18 @@ public class UserDao {
 		return sqlSession.insert("user.insertUser", userVo);
 	}
 	
+	//아이디중복체크
+	public UserVo getId(String id) {
+		System.out.println("UserDao > getId");
+		
+		return sqlSession.selectOne("user.getId", id);
+	}
+	
 	//로그인
 	public UserVo getUser(UserVo userVo) {
-		System.out.println("UserDao > getUser(로그인)");
+		System.out.println("UserDao > getUser");
 		
 		return sqlSession.selectOne("user.getUser", userVo);
-		
 	}
 	
 

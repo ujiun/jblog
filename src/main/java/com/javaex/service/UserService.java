@@ -35,12 +35,31 @@ public class UserService {
 		return count;
 	}
 	
+	//아이디 중복체크
+	public String getId(String id) {
+		System.out.println("UserService > getId");
+		
+		String state = null;
+		
+		UserVo userVo = userDao.getId(id);
+		
+		if(userVo == null) {
+			state = "available";
+		}else {
+			state = "unavailable";
+		}
+		
+		
+		return state;
+	}
+	
 	//로그인
 	public UserVo login(UserVo userVo) {
 		System.out.println("UserService > login");
 		
 		return userDao.getUser(userVo);
 	}
+	
 	
 	
 }

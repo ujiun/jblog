@@ -34,7 +34,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td id="tdMsg" colspan="2">사용할 수 있는 아이디 입니다.</td>
+						<td id="tdMsg" colspan="2"></td>
 					</tr>
 					<tr>
 						<td><label for="txtPassword">패스워드</label></td>
@@ -67,15 +67,46 @@
 </body>
 <script type="text/javascript">
 
-$(document).ready(function(){
-	console.log("jquery로 요청");
+/*중복아이디 체크버튼 눌렀을 때*/
+$("#btnIdCheck").on("click", function(){
+	console.log("중복아이디 체크버튼 클릭");
+	
+	var id = $("#txtId").val();
+	
+	console.log(id);
+	//서버로 데이터 전송
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath }/user/idCheck",		
+		type : "post",
+		contentType : "application/json",
+		data : JSON.stringify(id),
+
+		dataType : "json",
+		success : function(result){
+			/*성공시 처리해야될 코드 작성*/
+			
+			if(result == "available") {
+				$("#tdMsg").text("사용할 수 있는 아이디 입니다.");
+			}else {
+				$("#tdMsg").text("다른 아이디로 가입해 주세요.");
+			}
+			
+			
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+	
 });
 
+/*회원가입 버튼 클릭*/
 $("#joinForm").on("submit", function(){
 	console.log("회원가입 버튼 클릭");
 	
 	
-	var id = $("#txtId").val();
+	//var id = $("#txtId").val();
 	var password = $("#txtPassword").val();
 	var name = $("#txtUserName").val();
 	

@@ -5,8 +5,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
@@ -35,6 +37,17 @@ public class UserController {
 		
 		
 		return "user/joinSuccess";
+	}
+	
+	//아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value = "/idCheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String idCheck(@RequestBody String id) {
+		System.out.println("UserController > idCheck()");
+		
+		String state = userService.getId(id);
+		
+		return state;
 	}
 	
 	//로그인폼
