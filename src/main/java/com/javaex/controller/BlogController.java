@@ -74,7 +74,7 @@ public class BlogController {
 		
 		blogService.update(blogVo, file);
 		
-		return "";
+		return "redirect:./" + authUser.getId() +"/admin/basic";
 	}
 
 }

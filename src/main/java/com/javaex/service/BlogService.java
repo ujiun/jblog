@@ -29,38 +29,48 @@ public class BlogService {
 	
 	//블로그 업데이트
 	public int update(BlogVo blogVo, MultipartFile file) {
-		System.out.println("BlogService > update");
+		System.out.println("BlogService > update");		
+
 		
 		String saveDir = "C:\\javaStudy\\upload";
 		
 		//오리지널 파일명
 		String orgName = file.getOriginalFilename();
-		
-		//확장자
-		String exName = orgName.substring(orgName.lastIndexOf("."));
-		
-		//저장할 파일명
-		String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
-		
-		//파일경로(디렉토리+저장파일명)
-		String filePath = saveDir + "\\" + saveName;
-		
-		//파일 하드디스크저장
-		
-		try {
-			byte[] fileData = file.getBytes();
+
+
+		if(!orgName.equals("")) {
+			//확장자
+			String exName = orgName.substring(orgName.lastIndexOf("."));
 			
-			OutputStream os = new FileOutputStream(filePath);
-			BufferedOutputStream bos = new BufferedOutputStream(os);
+			//저장할 파일명
+			String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
 			
-			bos.write(fileData);
-			bos.close();
+			//파일경로(디렉토리+저장파일명)
+			String filePath = saveDir + "\\" + saveName;
 			
-		} catch (IOException e) {
-			e.printStackTrace();
+			//파일 하드디스크저장
+			
+			try {
+				byte[] fileData = file.getBytes();
+				
+				OutputStream os = new FileOutputStream(filePath);
+				BufferedOutputStream bos = new BufferedOutputStream(os);
+				
+				bos.write(fileData);
+				bos.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			blogVo.setLogoFile(saveName);
+			
+		}else {
+			String logoFile = blogDao.getBlog(blogVo.getId()).getLogoFile();
+			blogVo.setLogoFile(logoFile);
 		}
 		
-		blogVo.setLogoFile(saveName);
+		
 		
 		return blogDao.updateBlog(blogVo);
 	}

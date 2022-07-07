@@ -106,7 +106,7 @@ $("#joinForm").on("submit", function(){
 	console.log("회원가입 버튼 클릭");
 	
 	
-	//var id = $("#txtId").val();
+	var id = $("#txtId").val();
 	var password = $("#txtPassword").val();
 	var name = $("#txtUserName").val();
 	
