@@ -43,10 +43,15 @@ public class BlogController {
 		
 		UserVo userVo = (UserVo)session.getAttribute("authUser");
 
-		if( userVo != null ) {
+		if( userVo != null) {
 			String authUserId = userVo.getId();
 			
 			if(authUserId.equals(id)) {
+				
+				BlogVo blogVo= blogService.getBlog(id);
+				
+				model.addAttribute("blogVo", blogVo);
+				
 				return "blog/admin/blog-admin-basic";
 			}
 			
