@@ -24,6 +24,10 @@ public class BlogController {
 		
 		BlogVo blogVo= blogService.getBlog(id);
 		
+		if(blogVo == null) {
+			return "redirect:/";
+		}
+		
 		model.addAttribute("blogVo", blogVo);
 		
 		return "blog/blog-main";
