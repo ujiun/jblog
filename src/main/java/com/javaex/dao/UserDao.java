@@ -16,7 +16,7 @@ public class UserDao {
 	public int userInsert(UserVo userVo) {
 		System.out.println("UserDao > userInsert");
 		
-		return sqlSession.insert("user.insert", userVo);
+		return sqlSession.insert("user.insertUser", userVo);
 	}
 	
 	//로그인
@@ -27,10 +27,5 @@ public class UserDao {
 		
 	}
 	
-	//한명정보 가져오기
-	public UserVo getUser(String id) {
-		System.out.println("UserDao > getUser(한명정보)");
-		
-		return sqlSession.selectOne("user.getUser2", id);
-	}
+
 }

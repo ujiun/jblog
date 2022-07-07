@@ -3,7 +3,7 @@
 
 <mapper namespace="user">
 	
-	<insert id="insert" parameterType="com.javaex.vo.UserVo">
+	<insert id="insertUser" parameterType="com.javaex.vo.UserVo">
 		<![CDATA[
 			insert into users
 			values (seq_users_no.nextval, #{id}, #{userName}, #{password}, sysdate)
@@ -20,15 +20,6 @@
 		]]>
 	
 	</select>
-	
-	<select id="getUser2" parameterType="String" resultType="com.javaex.vo.UserVo">
-		<![CDATA[
-			select id,
-      			   userName
-			from users
-			where id = #{id}
-		]]>
-	
-	</select>
+
 	
 </mapper>

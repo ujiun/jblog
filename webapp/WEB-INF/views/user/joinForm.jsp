@@ -8,6 +8,9 @@
 <title>JBlog</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
 
+<!-- js -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+
 </head>
 <body>
 	<div id="center-content">
@@ -26,7 +29,7 @@
 					</colgroup>
 					<tr>
 						<td><label for="txtId">아이디</label></td>
-						<td><input id="txtId" type="text" name="id"></td>
+						<td><input id="txtId" type="text" name="id" value=""></td>
 						<td><button id="btnIdCheck" type="button">아이디체크</button></td>
 					</tr>
 					<tr>
@@ -62,6 +65,47 @@
 	</div>
 
 </body>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	console.log("jquery로 요청");
+});
+
+$("#joinForm").on("submit", function(){
+	console.log("회원가입 버튼 클릭");
+	
+	
+	var id = $("#txtId").val();
+	var password = $("#txtPassword").val();
+	var name = $("#txtUserName").val();
+	
+	if(id == "" || id == null){
+		alert("아이디를 입력해주세요");
+		return false;
+	}
+	
+	if(password == "" || password == null){
+		alert("패스워드를 입력해주세요");
+		return false;
+	}
+	
+	if(name == "" || name == null){
+		alert("이름을 입력해주세요");
+		return false;
+	}
+	
+	//약관동의
+	var agree = $("#chkAgree").is(":checked");
+	if(agree == false) {
+		alert("약관에 동의해주세요")
+		return false;
+	}
+
+	
+	return true;
+});
+
+</script>
 
 
 </html>

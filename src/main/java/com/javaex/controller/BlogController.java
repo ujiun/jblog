@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.javaex.service.UserService;
-import com.javaex.vo.UserVo;
+import com.javaex.service.BlogService;
+import com.javaex.vo.BlogVo;
 
 @Controller
 @RequestMapping(value = "/blog")
 public class BlogController {
 	
 	@Autowired
-	private UserService userService;
+	private BlogService blogService;
 	
 	//블로그방문
 	@RequestMapping(value = "/{id}", method = {RequestMethod.GET, RequestMethod.POST})
 	public String visit(@PathVariable("id") String id, Model model) {		
 		System.out.println("BlogController > visit()");
 		
-		UserVo userVo= userService.getUser(id);
-
-		model.addAttribute("userVo", userVo);
+		BlogVo blogVo= blogService.getBlog(id);
+		
+		model.addAttribute("blogVo", blogVo);
 		
 		return "blog/blog-main";
 	}
