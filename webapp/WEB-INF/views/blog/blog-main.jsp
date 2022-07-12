@@ -22,14 +22,14 @@
 				<div id="profile">
 					
 					<!-- 기본이미지 -->
-					<c:if test="${blogVo.logoFile == null }">
+					<c:if test="${bMap.blogVo.logoFile == null }">
 						<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
 					</c:if>
 					<!-- 사용자업로드 이미지 -->
-					<c:if test="${blogVo.logoFile != null }">
-						<img id="proImg" src="${pageContext.request.contextPath }/upload/${blogVo.logoFile }">
+					<c:if test="${bMap.blogVo.logoFile != null }">
+						<img id="proImg" src="${pageContext.request.contextPath }/upload/${bMap.blogVo.logoFile }">
 					</c:if>
-					<div id="nick">${blogVo.userName}(${blogVo.id})</div>
+					<div id="nick">${bMap.blogVo.userName}(${bMap.blogVo.id})</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">

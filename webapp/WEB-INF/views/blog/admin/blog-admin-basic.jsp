@@ -21,7 +21,7 @@
 		<div id="content">
 			<ul id="admin-menu" class="clearfix">
 				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/blog/${authUser.id}/admin/basic">기본설정</a></li>
-				<li class="tabbtn"><a href="">카테고리</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/blog/${authUser.id}/admin/category">카테고리</a></li>
 				<li class="tabbtn"><a href="">글작성</a></li>
 			</ul>
 			<!-- //admin-menu -->
@@ -35,17 +35,17 @@
 						</colgroup>
 			      		<tr>
 			      			<td><label for="textTitle">블로그 제목</label></td>
-			      			<td><input id="textTitle" type="text" name="blogTitle" value="${blogVo.blogTitle }"></td>
+			      			<td><input id="textTitle" type="text" name="blogTitle" value="${bMap.blogVo.blogTitle }"></td>
 			      		</tr>
 			      		<tr>
 			      			<td><label>로고이미지</label></td>
 			      			<!-- 기본이미지 -->
-			      			<c:if test="${blogVo.logoFile == null }">
+			      			<c:if test="${bMap.blogVo.logoFile == null }">
 			      				<td class="text-left"><img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg"></td>   
 			      			</c:if>
-			      			
-			      			<c:if test="${blogVo.logoFile != null }">
-			      				<td class="text-left"><img id="proImg" src="${pageContext.request.contextPath }/upload/${blogVo.logoFile }"></td> 
+			      			<!-- 사용자업로드 이미지 -->
+			      			<c:if test="${bMap.blogVo.logoFile != null }">
+			      				<td class="text-left"><img id="proImg" src="${pageContext.request.contextPath }/upload/${bMap.blogVo.logoFile }"></td> 
 			      			</c:if>
 			      		</tr>      		
 			      		<tr>

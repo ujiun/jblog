@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +25,18 @@ public class BlogController {
 	@Autowired
 	private BlogService blogService;
 	
-	//블로그방문
+	//블로그 메인
 	@RequestMapping(value = "/{id}", method = {RequestMethod.GET, RequestMethod.POST})
-	public String visit(@PathVariable("id") String id, Model model) {		
-		System.out.println("BlogController > visit()");
+	public String main(@PathVariable("id") String id, Model model) {		
+		System.out.println("BlogController > main()");
 		
-		BlogVo blogVo= blogService.getBlog(id);
+		Map<String, Object> bMap= blogService.getBlog(id);
 		
-		if(blogVo == null) {
+		if(bMap == null) {
 			return "redirect:/";
 		}
 		
-		model.addAttribute("blogVo", blogVo);
+		model.addAttribute("bMap", bMap);
 		
 		return "blog/blog-main";
 	}
@@ -51,9 +53,9 @@ public class BlogController {
 			
 			if(authUserId.equals(id)) {
 				
-				BlogVo blogVo= blogService.getBlog(id);
+				Map<String, Object> bMap= blogService.getBlog(id);
 				
-				model.addAttribute("blogVo", blogVo);
+				model.addAttribute("bMap", bMap);
 				
 				return "blog/admin/blog-admin-basic";
 			}
