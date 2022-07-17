@@ -41,7 +41,7 @@ public class BlogController {
 		return "blog/blog-main";
 	}
 	
-	//블로그 관리폼
+	//블로그 관리폼 
 	@RequestMapping(value = "/{id}/admin/basic", method = {RequestMethod.GET, RequestMethod.POST})
 	public String admin(@PathVariable("id") String id, HttpSession session, Model model) {
 		System.out.println("BlogController > admin()");

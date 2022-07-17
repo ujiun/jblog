@@ -27,7 +27,7 @@ public class BlogService {
 	@Autowired
 	private CategoryDao categoryDao;
 
-	// 블로그정보 하나 가져오기
+	//블로그정보 하나 가져오기
 	public Map<String, Object> getBlog(String id) {
 		System.out.println("BlogService > blogMain");
 
@@ -42,7 +42,7 @@ public class BlogService {
 		return bMap;
 	}
 
-	// 블로그 업데이트
+	//블로그 업데이트
 	public int update(BlogVo blogVo, MultipartFile file) {
 		System.out.println("BlogService > update");
 
