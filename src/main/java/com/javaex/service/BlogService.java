@@ -48,6 +48,7 @@ public class BlogService {
 
 		String saveDir = "C:\\javaStudy\\upload";
 
+		
 		// 오리지널 파일명
 		String orgName = file.getOriginalFilename();
 
